@@ -1,0 +1,18 @@
+Just replace the ellipses(...) in the Template.ps1 with the information.
+
+variable = description
+example
+(comments)
+
+$mc = Minecraft version
+"1.6.2"
+"1.12"
+(etc...)
+
+$mod = last part of mod page URL
+"what-ever"
+("https://minecraft.curseforge.com/projects/what-ever")
+++++++++
+V Copy for each mod V
+$mod = "..."
+& $path\scripts\CurseForge.ps1
