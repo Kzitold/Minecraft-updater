@@ -1,0 +1,92 @@
+Soo... Finally noting my thoughts for those whom may be curious (not sure how readable it'll be since I'm on my phone.) First, to catch-up.
+
+Started this because of updates being way to frequent at the time, like "everyday" frequent. There was also a problem at the time with the AdFoc.us links taking me to a non-AdFoc.us scareware ad, forcing me to endtask.
+Constantly encountering the "Forge update available" dot, so I do that, than I check my someteen "essential" mods for updates, and I lose all motivation to play by than.
+The "Favourites" list with the mods.curse account helped some, but wasn't willing to buy Premium for bulk downloads.
+
+Noticed that mods.curse does a static link to whatever is the latest update for a mod. Will this part be easy? Suggested Forge to do the "static link to whatever latest" on August 5, 2016. They didn't go with the idea and told me how it would be bad for a business relying on ads for money, but they didn't seem upset about the suggestion, and no warning points.
+Thus, the project begins.
+
+Took the navigation by source code approach since I figured it'd be easy. It was relatively easy to read.
+Attempted with .bat files first, but that quickly got frustrating with how limited it is. Don't remember the specifics of what made me give up on it, but something to do with limited control of "the focus."
+Breezed through translating it to .ps1
+
+**Memory getting blurry here, so taking glances at my Forge forums post history. Ended up using there as my project journal.**
+
+Found out mod updates aren't always for the latest MC.
+The download part of Forge.ps1 was relatively easy. The download in Optifine.ps1 was not so easy.
+Apparently, Optifine frequently changes the download address, so had to navigate through the source of another page. Felt awesome once it was done though.
+
+The install part of Forge.ps1 wasn't easy either. The only thing the installer allowed the shell to do was --installServer. Did a few topics on the forum about it, but did not receive much help on it (for obvious reasons.) Found out by a guess the files for serverForge also works for clientForge, and the rest could be extracted. Many copies of the .minecraft folder were made for file comparison between fresh directories.
+
+Decided to use minecraft.curseforge for mod updates. Basically the same as mods.curse, but can actually specify what MC version to check for because of the "Files" tab. Was quite easy to figure it out.
+
+Hiatus! Forge updates slowing down, so couldn't repeatedly test it. Kept me from enjoying MC because I knew it needed more work.
+
+A topic on custom renaming of the Forge files for decluttering by overwriting obsolete versions for the same MC. Wasn't expecting any help from people, but it did help myself remember to try it.
+So I'd put it in the scripts with maximum simplification renaming.
+Alternative reason for the renaming, looks nice in the launcher.
+
+Was trying at LiteLoader.ps1 (to make it LiteForge.) Apparently, I asked about it with the custom renaming topic on the Forge forums about it since it had no install from shell option.
+Took a few times of Lex telling me, and me finishing my more complicated way of mimicking the process using extracted files, before I looked into it being used like a mod.jar instead.
+Even though I gave the defense of having to go out of my way for the mod.jar since the installer jar wouldn't work as a mod, I still face-palmed hard.
+
+Was unsure if the function-bility of certain mods were name dependent, so deletion of outdated versions of mods had to be done manually for some time. Eventually upped my confidence enough to learn how to delete a folder from the shell once I finished everything else.
+
+Due to my increased confidence, I searched for Droid apps for me to dissect files and make notes on manipulating while away from home/at work for later testing.
+I use:
+RAR
+VT View Source
+DroidEdit
+
+Planned some bells and whistles, gave up some bells and whistles.
+Had it "good enough" for quite some time, so been mostly trying out random ideas and streamlining.
+
+Somehow didn't get any warning points on the Forge forums although I shared all my thoughts there excluding any part of the actual scripts, but probably because of the little lie of "not sharing the scripts unless given permission by the Forge team."
+I actually allowed it to be accessible by anyone through the link to my Minecraft stuffs on my profiles, and actively sharing with my Minecraft groups. XD
+
+**Current**
+
+Forge changed the layout of the Files page, so need to update the Forge.ps1 for that.
+
+Changed to parsing the "index_$mc.json" instead of "index_$mc.html" now (they're completely different) since I don't have the time to figure out navigating the code for the new page layout. Proving to be easier to navigate since learing how to Select-String using multiple strings to account for some inconsistencies in naming.
+Also just found out the "universal" may also be inconsistently named.
+
+I think I got the Forge.ps1 somewhat future-proofed, but there appears to be a limit on how far back in the versions it can go.
+
+Wow! Got the "root script" hella streamlined by cramming a good bit of the beginning into the Forge.ps1, and shortened how much of the address needed for CurseForge mods to just the name part.
+Added:
+.Mods excluded from updating (save to $path\mods\$mc)
+.Auto-launch upon completion ($launch = launcher path)
+.Forge server directory (since the installer ONLY let's the shell install as server)
+
+Forge.ps1 now compatable as far back as 1.6.2. Any further back is just too much changing around.
+
+Did instructions
+Made a Server.ps1 to add automatic updating the server Forge... I think.
+The Server.ps1 call is in the Forge.ps1 and is commented out by default.
+Shifted the $mc variable input to be the second variable so other variables can use it.
+
+Current features.txt
+
+Set some defaults to avoid overwhelment.
+Seperated the instructions accordingly.
+
+Pictorial instructions.
+
+"txt" folder for .txt copies of the scripts.
+Custom $exclude
+Edited appropriate parts of instructions.
+
+Added a few lines for independancy between scripts in the "Update\scripts"
+A bunch of "-Force | Out-Null" to get rid of those annoying "file already exists" errors
+Moved around a few lines for human readability
+Instructions to run the Template.ps1 scripts from a .bat to use like any other desktop shortcut
+Added a note on PowerShell version to the README.txt
+Nothing changed in the Template.ps1, so no redoing existing instructions! XD
+
+Did... Something. Late at night, so not sure what. Something about preventing false errors caused by stopping the scripts part way previously.
+
+Automatic profile switcher (Profile.ps1) in Workspace. Read Profile.txt to use.
+
+Shared on (r)eddit/Minecraft
