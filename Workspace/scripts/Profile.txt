@@ -1,0 +1,7 @@
+Add
+$profile = "..."
+to the launch script with all the other variables
+
+Add
+& $path\scripts\Profile.ps1
+somewhere in Forge.ps1 like just after $lib
