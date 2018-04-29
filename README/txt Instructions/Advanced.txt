@@ -1,0 +1,19 @@
+$launch = launcher path
+"C:\Users\$env:USERNAME\Desktop\launcher.jar"
+
+$server = forge server path
+(Default location auto-deletes at end of script.)
+
+$dir = directory path
+
+$exclude = excluded mods
+
+$mv = Minecraft version (for mods)
+
+Put .jar's for excluded mods in the set $exclude folder
+And don't add excluded mods to the updater script.
+
+Shortcut.bat
+-------------------------
+cd \Update
+powershell -File Template.ps1
