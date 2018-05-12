@@ -4,8 +4,8 @@ It's also recommended to only use this for client mods.
 
 Download the folder "Update." Save folder to where ever.
 
-txt Instructions in the folder named as such.
-Picture instructions in the Pictorial folder.
+txt Instructions in the README/txt Instructions/
+Picture instructions in the README/Pictorial/
 
 The "Workspace" folder is for myself. Contents may or may not work, and may or may not be dangerous.
 I just always get my ideas while at work. You understand?
