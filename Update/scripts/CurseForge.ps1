@@ -7,7 +7,7 @@ $mod = "https://minecraft.curseforge.com/projects/$mod/files"
 
 $client.DownloadFile("$mod/files","$path\scripts\updater\source.txt")
 
-Select-String source.txt -pattern "  $mv</option>" | Select-Object LineNumber > num.txt
+Select-String source.txt -pattern "Â Â $mv</option>" -SimpleMatch | Select-Object LineNumber > num.txt
 $num = get-content num.txt | select -Last 3 | select -First 1
 $ver = get-content source.txt | select -first 1 -skip ([int]$num-3)
 $ver = $ver.Remove(0,11)
