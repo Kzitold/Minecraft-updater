@@ -9,4 +9,5 @@ Possibly more streamlining and fixes
 (If you know this stuff, contact me)
 [I'm very much noob]
 
-PowerShell Core
+Scripts updating
+(Gonna try with a "last updated.txt")
