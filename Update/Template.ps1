@@ -1,10 +1,11 @@
-$path = [Environment]::CurrentDirectory = Get-Location -PSProvider FileSystem
-$launch = "..."
+$path = split-path -parent $MyInvocation.MyCommand.Definition
 
 $mc = "..."
-$server = "$path\scripts\updater\server"
-$dir = "C:\Users\$env:USERNAME\AppData\Roaming\.minecraft"
+$launch = "..."
+
 $exclude = "$path\mods\$mc"
+$dir = "C:\Users\$env:USERNAME\AppData\Roaming\.minecraft"
+$server = "$path\scripts\updater\server"
 
 & $path\scripts\Forge.ps1
 & $path\scripts\LiteLoader.ps1
