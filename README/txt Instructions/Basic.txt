@@ -14,5 +14,6 @@ $mod = last part of mod page URL
 ("https://minecraft.curseforge.com/projects/what-ever")
 ++++++++
 V Copy for each mod V
+
 $mod = "..."
 & $path\scripts\CurseForge.ps1
