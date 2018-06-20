@@ -16,6 +16,7 @@ Now gonna keep scripts for non-CurseForge mods in the Workspace/scripts folder. 
 If any coders wish to help improve this, please contact me.
 
 Tested with PowerShell V5. Not sure yet how low it'll still work.
-Check powershell version with
+Now works with PowerShell Core.
 
+Check powershell version with
 $PSVersionTable.PSVersion
