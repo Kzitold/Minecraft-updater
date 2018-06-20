@@ -19,4 +19,5 @@ Tested with PowerShell V5. Not sure yet how low it'll still work.
 Now works with PowerShell Core.
 
 Check powershell version with
+
 $PSVersionTable.PSVersion
