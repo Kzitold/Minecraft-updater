@@ -1,0 +1,31 @@
+Auto-start launcher
+($launch)
+([Default] Disabled)
+
+Server folder
+($server)
+(Can set to be within the junk files to be auto-deleted)
+([Default] "$path\scripts\updater\server")
+
+Custom directory
+($dir)
+([Default] "C:\Users\$env:USERNAME\AppData\Roaming\.minecraft")
+
+Set MC version to search mods for a different MC part way through, for still compatible mods that are 0.0.X versions behind.
+($mv)
+
+Mod exclusion from being updated, such as server mods.
+($exclude)
+([Default] "$path\mods\$mc")
+
+Removal of junk files created in the process
+($path\scripts\updater)
+
+Custom main directory
+($lib hidden in Forge.ps1)
+([Default] "C:\Users\$env:USERNAME\AppData\Roaming\.minecraft")
+
+Update server jar
+
+Simplified renaming of a few .jars, renaming of the version.json, and edits to the version.json accordingly
+(Decluttering and I think it looks nice)
