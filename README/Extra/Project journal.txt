@@ -90,3 +90,10 @@ Did... Something. Late at night, so not sure what. Something about preventing fa
 Automatic profile switcher (Profile.ps1) in Workspace. Read Profile.txt to use.
 
 Shared on (r)eddit/Minecraft
+
+launcher.jar couldn't load versions after 1.13, so forced to use launcher.exe
+The exe does the launcher_profiles.json way differently from the jar, so had to update that.
+The launcher_profiles.json for the exe did not have a "selectedProfile" which the jar used for the selected profile, but instead used "lastUsed" in each profile with the time of last use and selects profile based on most recent.
+Had to learn how to Get-Date. Other than that, it was more of what I'm already familiar with.
+Took this opportunity to try streamlining some of the text selection in that speciffic script to hopefully not need temporary text files for partial copies. Appears to have been successful.
+Profile.ps1 for the jar is now Profile.old.ps1
