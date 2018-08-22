@@ -1,3 +1,5 @@
+Copy Profile.ps1 to $path\scripts\Profile.ps1
+
 Add
 $profile = "..."
 to the launch script with all the other variables
