@@ -16,6 +16,4 @@ $mv = $mc
 $mod = "..."
 & $path\scripts\CurseForge.ps1
 
-Remove-Item $path\scripts\updater -recurse
-
 #start $launch
