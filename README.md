@@ -17,6 +17,7 @@ If any coders wish to help improve this, please contact me.
 This is meant to work on a "Vanilla" computer straight out of the box, so no downloading of sketchy programs (if you don't already have Powershell, I think Powershell Core can be trusted.)
 
 Tested with PowerShell V5. Not sure yet how low it'll still work.
+
 Now works with PowerShell Core.
 
 Check powershell version with
