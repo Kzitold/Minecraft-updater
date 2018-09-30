@@ -1,4 +1,3 @@
-if (Test-Path "$path\scripts\updater"){Remove-Item $path\scripts\updater -recurse}
 New-Item $path\scripts\updater -type directory -Force | Out-Null
 cd $path\scripts\updater
 $client = new-object System.Net.WebClient
@@ -37,3 +36,4 @@ $client.DownloadFile("https://minecraft.curseforge.com$ver/download","$dir\mods\
 
 echo "$jar"
 cd $path
+Remove-Item $path\scripts\updater -recurse
