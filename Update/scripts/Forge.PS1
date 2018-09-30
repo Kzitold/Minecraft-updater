@@ -1,4 +1,3 @@
-if (Test-Path "$path\scripts\updater"){Remove-Item $path\scripts\updater -recurse}
 New-Item $path\scripts\updater -type directory -Force | Out-Null
 $lib = "C:\Users\$env:USERNAME\AppData\Roaming\.minecraft"
 $client = new-object System.Net.WebClient
@@ -88,3 +87,4 @@ Copy-Item $lib\versions\$mc`\$mc`.jar $lib\versions\Forge-$mc`\Forge-$mc`.jar -r
 
 echo "forge-$mc`.jar"
 cd $path
+Remove-Item $path\scripts\updater -recurse
