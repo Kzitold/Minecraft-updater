@@ -1,4 +1,3 @@
-if (Test-Path "$path\scripts\updater"){Remove-Item $path\scripts\updater -recurse}
 New-Item $path\scripts\updater -type directory -Force | Out-Null
 cd $path\scripts\updater
 $client = new-object System.Net.WebClient
@@ -27,3 +26,4 @@ $client.DownloadFile("http://optifine.net/downloadx?f=$jar&x=$ver","$dir\mods\$m
 
 echo "$jar"
 cd $path
+Remove-Item $path\scripts\updater -recurse
