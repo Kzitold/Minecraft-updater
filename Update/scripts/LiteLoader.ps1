@@ -1,4 +1,3 @@
-if (Test-Path "$path\scripts\updater"){Remove-Item $path\scripts\updater -recurse}
 New-Item $path\scripts\updater -type directory -Force | Out-Null
 $client = new-object System.Net.WebClient
 $jar = "liteloader-installer-$mc-00-SNAPSHOT.jar"
@@ -18,3 +17,4 @@ Copy-Item $path\scripts\updater\liteloader-$mc\liteloader-$mc-SNAPSHOT-release.j
 
 echo "liteloader-$mc-SNAPSHOT-release.jar"
 cd $path
+Remove-Item $path\scripts\updater -recurse
