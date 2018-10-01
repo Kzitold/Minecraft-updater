@@ -1,30 +1,32 @@
 $host.UI.RawUI.WindowTitle = "$profile : ViveForge"
 
-New-Item $path\scripts\updater -type directory -Force | Out-Null
+$updater = "$path\scripts\updater"
+New-Item $updater -type directory -Force | Out-Null
 
 $client = new-object System.Net.WebClient
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$ver = $mc
-$num = ($mc.ToCharArray() | Where-Object {$_ -eq '.'} | Measure-Object).Count
+$ver = $mv
+$num = ($mv.ToCharArray() | Where-Object {$_ -eq '.'} | Measure-Object).Count
 
 If ($num -eq 2) {
-$ver = $mc.Remove($mc.length-(($mc -split('\.') | select -skip 2).length))
+$ver = $mv.Remove($mv.length-(($mv -split('\.') | select -skip 2).length))
 }
 
 $ver = $ver.replace('.', "")
 $git = "https://github.com/jrbudda/Vivecraft_$ver/releases/latest"
 
-$client.DownloadFile("$git","$path\scripts\updater\source.txt")
-$num = Select-String $path\scripts\updater\source.txt -pattern download.*installer.exe | select-string -pattern 'NONVR' -notmatch | Select-Object -ExpandProperty LineNumber
-$ver = get-content $path\scripts\updater\source.txt | select -first 1 -skip ([int]$num-1)
+$client.DownloadFile("$git","$updater\source.txt")
+
+$num = Select-String $updater\source.txt -pattern download.*installer.exe | select-string -pattern 'NONVR' -notmatch | Select-Object -ExpandProperty LineNumber
+$ver = get-content $updater\source.txt | select -first 1 -skip ($num-1)
 
 $num = $ver -split("""") | select-string -pattern 'href' | Select-Object -ExpandProperty LineNumber
 $git = $ver -split("""") | select -first 1 -skip $num
 
-$client.DownloadFile("https://github.com$git","$path\scripts\updater\install.exe")
+$client.DownloadFile("https://github.com$git","$updater\install.exe")
 
-start $path\scripts\updater\install.exe
+start $updater\install.exe
 Start-Sleep 5
 $nid = (Get-Process javaw).id
 Wait-Process -Id $nid
@@ -41,4 +43,4 @@ Remove-Item $dir\versions\$ver -recurse
 
 echo "ViveForge-$mc`.jar"
 cd $path
-Remove-Item $path\scripts\updater -recurse
+Remove-Item $updater -recurse

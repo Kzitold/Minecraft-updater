@@ -1,0 +1,7 @@
+Not yet fully automated.
+
+Vivecraft installer downloads a specific version of Optifine and patches it up, and I don't know yet how to change Optifine version without downloading another program. Placing a more recent Optifine in the mods folder doesn't work.
+
+I did find a way to change Forge version.
+
+Install Vivecraft with Forge, Custom Version, and clear the text box. This will make it detect the Forge from earlier in the automation so you're not downloading another older Forge and dealing with another installer window.
