@@ -1,39 +1,36 @@
-New-Item $path\scripts\updater -type directory -Force | Out-Null
-cd $path\scripts\updater
+$host.UI.RawUI.WindowTitle = "$profile : $mod"
+
+$updater = "$path\scripts\updater"
+New-Item $updater -type directory -Force | Out-Null
+cd $updater
 $client = new-object System.Net.WebClient
 
 $mod = "https://minecraft.curseforge.com/projects/$mod/files"
 
-$client.DownloadFile("$mod/files","$path\scripts\updater\source.txt")
+$client.DownloadFile("$mod/files","$updater\source.txt")
 
-Select-String source.txt -pattern "  $mv</option>" -SimpleMatch | Select-Object LineNumber > num.txt
-$num = get-content num.txt | select -Last 3 | select -First 1
-$ver = get-content source.txt | select -first 1 -skip ([int]$num-3)
-$ver = $ver.Remove(0,11)
-$ver = $ver.Remove($ver.Length-1)
+$num = Select-String $updater\source.txt -pattern "  $mv</option>" -SimpleMatch | Select-Object -ExpandProperty LineNumber
+$ver = ((get-content $updater\source.txt | select -first 1 -skip ([int]$num-3)).Remove(0,11)).split("""")
+
 $mod = "$mod`?filter-game-version=$ver"
 
-$client.DownloadFile($mod,"$path\scripts\updater\source.txt")
+$client.DownloadFile($mod,"$updater\source.txt")
 
-Select-String source.txt -pattern "col-downloads" | Select-Object LineNumber > num.txt
-$num = get-content num.txt | select -Last 3 | select -First 1
-$ver = get-content source.txt | select -first 1 -skip ([int]$num+28)
+$num = Select-String $updater\source.txt -pattern "col-downloads" | Select-Object -ExpandProperty LineNumber
 
-$ver.split('"') > source.txt
-Select-String source.txt -pattern "href" | Select-Object LineNumber > num.txt
-$num = get-content num.txt | select -Last 3 | select -First 1
-$ver = get-content source.txt | select -first 1 -skip ([int]$num)
+$ver = get-content $updater\source.txt | select -first 1 -skip ($num+28)
+$ver.split('"') > $updater\source.txt
+$num = Select-String $updater\source.txt -pattern "href" | Select-Object -ExpandProperty LineNumber
+$ver = get-content $updater\source.txt | select -first 1 -skip ($num)
 
-$client.DownloadFile("https://minecraft.curseforge.com$ver","$path\scripts\updater\source.txt")
+$client.DownloadFile("https://minecraft.curseforge.com$ver","$updater\source.txt")
 
-Select-String source.txt -pattern "Filename" | Select-Object LineNumber > num.txt
-$num = get-content num.txt | select -Last 3 | select -First 1
-$jar = get-content source.txt | select -first 1 -skip ([int]$num)
-$jar = $jar.split(">") | select -first 1 -skip 1
-$jar = $jar.split("<") | select -first 1
+$num = Select-String $updater\source.txt -pattern "Filename" | Select-Object -ExpandProperty LineNumber
+
+$jar = ((get-content $updater\source.txt | select -first 1 -skip ($num)).split(">") | select -first 1 -skip 1).split("<") | select -first 1
 
 $client.DownloadFile("https://minecraft.curseforge.com$ver/download","$dir\mods\$mc\$jar")
 
 echo "$jar"
 cd $path
-Remove-Item $path\scripts\updater -recurse
+Remove-Item $updater -recurse
