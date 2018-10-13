@@ -41,6 +41,6 @@ Copy-Item $dir\versions\$ver\$ver.jar $vf\ViveForge-$mc.jar -recurse -Force | Ou
 (Get-Content $vf\ViveForge-$mc.json).replace("`"id`": `"$ver`"", "`"id`": `"ViveForge-$mc`"") | Set-Content $vf\ViveForge-$mc.json
 Remove-Item $dir\versions\$ver -recurse
 
-echo "ViveForge-$mc`.jar"
+echo "ViveForge-$mc`.exe"
 cd $path
 Remove-Item $updater -recurse
