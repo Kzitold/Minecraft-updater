@@ -5,8 +5,6 @@ New-Item $updater -type directory -Force | Out-Null
 
 $lib = "$env:APPDATA\.minecraft"
 
-& $path\scripts\Profile.ps1
-
 $client = new-object System.Net.WebClient
 
 Add-Type -AssemblyName System.IO.Compression.FileSystem
