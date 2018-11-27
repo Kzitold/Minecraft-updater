@@ -11,6 +11,7 @@ The "Workspace" folder is for myself. Contents may or may not work, and may or m
 I just always get my ideas while at work. You understand?
 
 Now gonna keep scripts for non-CurseForge mods and other stuff in the Workspace/scripts folder. Just put them in the scripts folder and call with
+
 & $path\scripts\mod.ps1
 
 If any coders wish to help improve this, please contact me.
