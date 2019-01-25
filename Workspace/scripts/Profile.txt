@@ -1,15 +1,12 @@
+Manually create a launcher profile
+
 Copy Profile.ps1 to $path\scripts\Profile.ps1
 
-Add
-$profile = "..."
-to the launch script with all the other variables
+Set the $profile in the launch script with all the other variables
 
 Add
 & $path\scripts\Profile.ps1
 somewhere in Forge.ps1 like just after $lib
-
-Delete
-$profile = $mc
 
 Profile.old.ps1 for launcher.jar
 Profile.ps1 for launcher.exe
