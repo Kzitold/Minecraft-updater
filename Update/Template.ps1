@@ -2,6 +2,7 @@ $path = split-path -parent $MyInvocation.MyCommand.Definition
 
 $mc = "..."
 $launch = "..."
+$profile = $mc
 
 $exclude = "$path\mods\$mc"
 $dir = "C:\Users\$env:USERNAME\AppData\Roaming\.minecraft"
