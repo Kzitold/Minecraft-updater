@@ -8,5 +8,8 @@ Add
 & $path\scripts\Profile.ps1
 somewhere in Forge.ps1 like just after $lib
 
+Delete
+$profile = $mc
+
 Profile.old.ps1 for launcher.jar
 Profile.ps1 for launcher.exe
