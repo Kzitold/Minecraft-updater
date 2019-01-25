@@ -1,4 +1,3 @@
-$profile = $mc
 $host.UI.RawUI.WindowTitle = "$profile : Forge"
 
 $updater = "$path\scripts\updater"
