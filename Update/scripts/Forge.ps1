@@ -39,23 +39,17 @@ Remove-Item $server\$ver -recurse
 }
 #----------------
 
-$forge = "http://files.minecraftforge.net/maven/net/minecraftforge/forge/index_$mc.json"
-
+$forge = "http://files.minecraftforge.net/maven/net/minecraftforge/forge/maven-metadata.json"
 $client.DownloadFile("$forge","$updater\source.txt")
-
-$num = Select-String $updater\source.txt -pattern `"$mc`":`{ | Select-Object -ExpandProperty LineNumber
-$fv = (get-content $updater\source.txt | select -first 1 -skip $num).split('"') | select -first 1 -skip 3
-
-$num = Select-String $updater\source.txt -pattern path.*$fv.*installer.jar | Select-Object -ExpandProperty LineNumber
-$ver = (get-content $updater\source.txt | select -first 1 -skip ($num-1)).split('"') | select -first 1 -skip 3
-
-$jar = $ver.split("/") | select -last 1
-
-$client.DownloadFile("http://files.minecraftforge.net/maven/net/minecraftforge/forge/$ver","$updater\$jar")
+$num = Select-String $updater\source.txt -pattern "`"$mc`": \[" | Select-Object -ExpandProperty LineNumber
+$num = $num + ((get-content $updater\source.txt | select -skip $num) | select-string -pattern "\]" | Select-Object -ExpandProperty LineNumber | select -first 1)
+$fv = (get-content $updater\source.txt | select -first 1 -skip ($num-2)).split('"') | select -first 1 -skip 1
+$jar = "forge-$fv-installer"
+$client.DownloadFile("http://files.minecraftforge.net/maven/net/minecraftforge/forge/$fv/$jar.jar","$updater\$jar.jar")
 
 cd $server
 $host.UI.RawUI.WindowTitle = "$profile : Forge..."
-java -jar "$updater\$jar" --installServer | Out-Null
+java -jar "$updater\$jar.jar" --installServer | Out-Null
 $host.UI.RawUI.WindowTitle = "$profile : Forge"
 cd $path
 
@@ -63,6 +57,7 @@ Copy-Item -Path "$exclude\*" -Destination "$server\mods" -recurse -Force | Out-N
 dir $server -name > $updater\source.txt
 
 $num = Select-String $updater\source.txt -pattern "universal" | Select-Object -ExpandProperty LineNumber
+
 $ver = get-content $updater\source.txt | select -first 1 -skip ($num-1)
 
 Unzip "$server\$ver" "$updater\universal"
