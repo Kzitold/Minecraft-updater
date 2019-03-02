@@ -1,8 +1,5 @@
 # Minecraft-updater
 
-Currently broken.
-http://www.minecraftforge.net/forum/topic/69045-what-happened-to-httpsfilesminecraftforgenetmavennetminecraftforgeforgeindex_1122json/
-
 THESE SCRIPTS DO DELETE TARGETED MODS FOLDER! BACKUP YOUR STUFF! USE AT OWN RISK!
 It's also recommended to only use this for client mods. Updating server mods may have side effects, but that's on the mods themselves. Not my fault.
 
