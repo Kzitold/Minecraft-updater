@@ -101,3 +101,4 @@ Profile.ps1 for the jar is now Profile.old.ps1
 With MC 1.13.2, the Forge Team removed the JSON I was using to fetch the file name for auto-download.
 Heh. I guess I'm not the only one. A few others asked about the index_$mc.json on the forums.
 Someone managed to locate another JSON I could use, but layed out differently. Reworking Forge.ps1
+Fixed it!
